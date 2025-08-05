@@ -172,7 +172,7 @@ def run_scraper_realtime(industry: str, location: str):
 
 # --- Main View ---
 
-st.set_page_config(page_title="Pencari Prospek", page_icon="📊", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Prospect Finder", page_icon="📊", layout="wide", initial_sidebar_state="collapsed")
 
 # Initialize session state
 if 'has_search_results' not in st.session_state:
