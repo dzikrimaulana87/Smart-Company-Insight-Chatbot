@@ -38,7 +38,7 @@ def search_similar_chunks(query, top_k=3):
     return [chunks[i] for i in I[0]]
 
 def prepare_embedding_if_needed(company):
-    if not (os.path.exists(TEXT_FILE) and os.path.exists(INDEX_FILE) and os.path.exists(CHUNK_FILE)):
+    if not (os.path.exists(INDEX_FILE) and os.path.exists(CHUNK_FILE)):
         scrape_company_pages(company)
         text = load_text_file(TEXT_FILE)
         chunks = split_text(text, chunk_size=500)

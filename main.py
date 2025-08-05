@@ -59,7 +59,7 @@ def get_dummy_data():
         ]
     }
     
-def run_scraper_realtime(industry: str, location: str):
+def run_scraper_realtime_dummy(industry: str, location: str):
     """
     Dummy version: Load and display static dummy data instead of real-time API.
     """
@@ -113,7 +113,7 @@ def process_and_display_batch(data, table_placeholder, batch_count):
                 except Exception as e:
                     st.error(f"Could not navigate to detail page: {e}")
 
-def run_scraper_realtime2(industry: str, location: str):
+def run_scraper_realtime(industry: str, location: str):
     """
     Running the scraper in real-time and updating the Streamlit app with results.
     """
