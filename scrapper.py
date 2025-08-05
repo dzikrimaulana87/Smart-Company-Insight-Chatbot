@@ -39,6 +39,7 @@ def save_text_to_file(text, filename, folder="data"):
         f.write(text)
 
 def scrape_company_pages(company_data):
+    print("###################### Scraping Company Pages ######################")
     company_name = company_data.get("Company", "Unknown Company")
     urls = [(company_data.get("Website", "")),(f"{company_data.get('Website', '')}/about"), (f"{company_data.get('Website', '')}/about-us")]
 
