@@ -37,13 +37,17 @@ def search_similar_chunks(query, top_k=3):
     D, I = index.search(np.array([query_embedding]), top_k)
     return [chunks[i] for i in I[0]]
 
+def do_embedding():
+    text = load_text_file(TEXT_FILE)
+    chunks = split_text(text, chunk_size=500)
+    embeddings = embed_chunks(chunks)
+    save_faiss_index(embeddings, chunks)
+
 def prepare_embedding_if_needed(company):
     scrape_company_pages(company)
     if not (os.path.exists(INDEX_FILE) and os.path.exists(CHUNK_FILE)):
-        text = load_text_file(TEXT_FILE)
-        chunks = split_text(text, chunk_size=500)
-        embeddings = embed_chunks(chunks)
-        save_faiss_index(embeddings, chunks)
+        do_embedding()
+        
 
 # ==== UI COMPONENT ====
 
@@ -78,7 +82,7 @@ def show_chat_interface():
         token_count = get_token_count(text)
         # st.caption(f"📦 Context length: {token_count} words")
 
-        if token_count < 700:
+        if token_count < 1500:
             # Direct stuffing
             prompt = build_prompt(text, query)
             answer = ask_local_llm(prompt)
@@ -87,6 +91,7 @@ def show_chat_interface():
         else:
             # Use FAISS
             chunks = search_similar_chunks(query)
+            do_embedding()
             context = "\n\n".join(chunks)
             prompt = build_prompt(context, query)
             answer = ask_local_llm(prompt)

@@ -68,9 +68,9 @@ Click "Start Chat"
 
 Scraper will extract website content (about, landing, etc.)
 
-If content < 700 words → LLM uses direct prompt stuffing
+If content < 1500 words → LLM uses direct prompt stuffing
 
-If content ≥ 700 words → FAISS used to semantically search relevant chunks
+If content ≥ 1500 words → FAISS used to semantically search relevant chunks
 
 LLaMA model answers your query strictly based on context
 
