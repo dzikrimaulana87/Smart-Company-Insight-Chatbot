@@ -25,10 +25,6 @@ def get_token_count(text):
 def build_prompt(context, query):
     return (
         f"You are a helpful assistant. Use the following company information to answer the question.\n\n"
-        f"- Base your answer strictly on the context above.\n"
-        f"- If the answer is not explicitly stated or cannot be confidently derived from the context, say: "
-        f"\"I'm not sure based on the provided information.\"\n"
-        f"- Do not make assumptions. Do not invent information.\n\n"
         f"{context}\n\n"
         f"Question: {query}\nAnswer:"
     )
